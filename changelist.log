@@ -1,0 +1,41 @@
+20170720
+wap无法评价
+|、修改 /data/logic/member_evaluate.logic.php
+2、增加 /data/moblie
+3、修改 /data/model/evaluate_goods.model.php /data/model/evaluate_store.model.php
+微信登陆后无法跳转之前浏览页问题修复
+4、新增 /wap/js/tmpl/wxlogin.js
+5、修改 /mobile/control/goods.php
+6、修改 /mobile/control/member_chat.php
+|-修复消息已读小红点残留，待收货，待付款，待评价等提示小红点
+1、mobile/control/member_index.php
+
+//wap微信分享朋友圈图片
+wap/tmpl/product_detail.html  //修改
+wap/js/tmpl/product_detail.js   //修改
+data/api/wxlogin  //添加整个文件包
+
+修复im goods商品显示图片
+wap/js/tmpl/chat_info.js
+
+阿里云短信
+/data/api/smsapi/dysmsapi//整个文件夹
+/core/framework/libraries/sms.php
+/data/logic/buy_1.logic.php
+
+二维码海报包括分销
+/core/framework/libraries/watermark.php
+data/upload/shop/common/default_wx2.jpg//海报背景图
+data/model/member.model.php
+shop/control/login.php
+mobile/control/login.php
+data/logic/goods.logic.php
+data/logic/buy.logic.php
+data/logic/buy_1.logic.php
+data/logic/order.logic.php
+wap/tmpl/member/member_invite.html
+wap/tmpl/member/member_invite1.html
+wap/tmpl/member/member_invite2.html
+wap/js/tmpl/member_invite.js
+wap/js/tmpl/index.js
+

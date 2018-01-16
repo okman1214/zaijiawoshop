@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>临泉首页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<header class="main">
+	<div class="header-wrap">
+		<div class="sys" style="float:left;margin-top:10px;margin-left:10px;"><a href="./tmpl/erweima.html"><img src="../../data/upload/shop/common/lqsh1.png"></a></div>
+		<div class="htsearch-wrap with-home-logo">
+
+			<input type="text" class="htsearch-input clr-999" value="" id="keyword" placeholder="搜索商品"/>
+			<a href="javascript:void(0);" class="search-btn"></a>
+		</div>
+	</div>
+<!-- <div class="main nav-ico">
+			<a href="<%=WapSiteUrl%>"><i></i>首页</a>
+			<a href="<%=WapSiteUrl%>/tmpl/product_first_categroy.html"><i></i>商品类别</a>
+			<a href="<%=WapTplUrl%>/cart_list.html"><i></i>购物车</a>
+			<a href="<%=WapTplUrl%>/tmpl/member/member.html?act=member"><i></i>个人中心</a>
+			<a href="<%=WapTplUrl%>/tmpl/product_store.html?store_id=1"><i></i>自营</a>
+			<a href="<%=WapTplUrl%>shop.html"><i></i>店铺</a>
+			<a href="<%=WapTplUrl%>/tmpl/product_store.html?store_id=3"><i></i>零食</a>
+			<a href="<%=WapTplUrl%>/wap/tmpl/product_store.html?store_id=3"><i></i>推荐</a>
+		</div> -->
+</header>
+<div class="main" id="main-container">
+	
+</div>
+<div class="main youlike" id="youlike">
+	<div class="ltitle">
+		猜你喜欢
+	</div>
+	<div class="like_list" id="like_list">
+		
+	</div>
+</div>
+<footer id="footer">
+	
+</footer>
+<script type="text/html" id="adv_list">
+	<div class="adv_list">
+	
+		<div class="swipe-wrap">
+		<% for (var i in item) { %>
+			<div class="item">
+				<a href="<%= item[i].url %>">
+					<img src="<%= item[i].image %>" alt="">
+				</a>
+			</div>
+		<% } %>
+		</div>
+	</div>
+	
+</script>
+<script type="text/html" id="home1">
+	<div class="index_block home1">
+	<% if (title) { %>
+		<a href="<%= url %>">
+			<div class="title">			
+			<% var keyhot = "抢购"; if (title.indexOf(keyhot)) { %>
+				<%= title %>
+				<div class="qgdjs">
+				<span id="day_show">0天</span>
+					<strong id="hour_show">0时</strong>
+					<strong id="minute_show">0分</strong>
+					<strong id="second_show">0秒</strong>
+				</div>			
+				<% }else{ %>
+					<%= title %>
+				<% } %>			
+			</div>
+		</a>
+
+			
+
+
+	<% } %>
+		<div class="content">
+			<div class="item">
+				<a href="<%= url %>">
+					<img src="<%= image %>" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="home2">
+	<div class="index_block home2">
+	<% if (title) { %>
+
+		<div class="title"><%= title %></div>
+	<% } %>
+		<div class="content">
+			<div class="item home2_1">
+				<a href="<%= square_url %>"><img src="<%= square_image %>" alt=""></a>
+			</div>
+			<div class="item home2_2">
+				<div class="border-left">
+					<div class="border-bottom">
+						<a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>" alt=""></a>
+					</div>
+					<div>
+						<a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>" alt=""></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="home3">
+	<div class="index_block home3">
+	<% if (title) { %>
+		<div class="title"><%= title %></div>
+	<% } %>
+		<div class="content">
+		<% for (var i in item) { %>
+			<div class="item">
+				<a href="<%= item[i].url %>"><img src="<%= item[i].image %>" alt=""></a>
+			</div>
+		<% } %>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="home4">
+	<div class="index_block home2">
+	<% if (title) { %>
+		<div class="title"><%= title %></div>
+	<% } %>
+		<div class="content">
+			<div class="item home2_2">
+				<div class="border-right">
+					<div class="border-bottom">
+						<a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>" alt=""></a>
+					</div>
+					<div>
+						<a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="item home2_1">
+				<a href="<%= square_url %>"><img src="<%= square_image %>" alt=""></a>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="goods">
+
+	<div class="index_block goods">
+	<% if (title ) { %>
+		<div class="title"><% var keyhot = "热"; if (!title.indexOf(keyhot)) { %><div style="float:left;margin-top:0px;height:100%"><img height="28px" src="./images/title1.png"><% }else{ %><div style="float:left;margin-top:0px;height:100%"><img height="28px" src="./images/title2.png"><% } %></div><%= title %><div style="float:right;margin-right:20px;"><% var keyhot = "本地特产"; if (!title.indexOf(keyhot)) { %><a href="tmpl/product_list.html?gc_id=1088">更多</a><% } %></div></div>
+	<% } %>
+		<div class="content">
+		<% for (var i in item) { %>
+			<div class="goods-item">
+				<a href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">
+					<div class="goods-item-pic"><img src="<%= item[i].goods_image %>" alt=""></div>
+					<div class="goods-item-name"><%= item[i].goods_name %></div>
+										
+				</a>
+				<div class="goods-det">
+					<div class="goods-item-price" style="float:left;">￥<%= item[i].goods_promotion_price %></div>
+					<div style="float:right;line-height:20px;margin-top:5px;margin-right:5px;">
+						<a class="adetail" href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">查看详情</a>
+					</div>
+				</div>
+			</div>
+		<% } %>
+		</div>
+	</div>
+
+</script>
+<script type="text/html" id="product_detail">
+
+	<div class="pddc-gray-warp">
+		<div class="pddc-commend-list">
+			<span class="pddc-commendl-title">商品推荐：</span>
+			<div class="pddc-commend-wp clearfix">
+				<%for (var i = 0;i<goods_commend_list.length;i++){%>
+					<a href="product_detail.html?goods_id=<%=goods_commend_list[i].goods_id%>">
+						<img src="<%=goods_commend_list[i].goods_image_url%>">
+						<span class="pddc-commendw-t" title="<%=goods_commend_list[i].goods_name%>">
+							<%=goods_commend_list[i].goods_name%>
+						</span>
+						<span class="pddc-commendw-price" title="￥<%=goods_commend_list[i].goods_price%>">￥<%=goods_commend_list[i].goods_price%></span>
+					</a>
+				<%}%>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="like_list_a">
+	<% if(like_list.length >0){%>
+		<%for (var i = 0;i<like_list.length;i++){%>
+			<a href="product_detail.html?goods_id=<%=like_list[i].goods_id;%>" class="pdlist-item-wrap clearfix">
+			<div class="l_img"><img src="<%=like_list[i].image_url%>"></div>
+			<div class="l_name"><%=like_list[i].goods_name;%></div>
+			<div class="l_price"><%=like_list[i].goods_price;%></div>
+			</a>
+			<div class="l_xs"><a href="./tmpl/product_list.html?gc_id=<%=like_list[i].gc_id;%>">找相似</div>
+		<%}%>
+	<%}%>
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/template.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/swipe.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/tmpl/footer.js"></script>
+	<script type="text/javascript" src="../js/tmpl/product_detail.js"></script>
+
+<script type="text/javascript">
+	function add_cart(){
+		'<button class="add-to-cart" onclick="add_cart()" id="<%= item[i].goods_id %>">加入购物车</button>';
+        //alert(111);
+         var key = getcookie('key');//登录标记
+         //alert(key);
+               if(key==''){
+                  window.location.href = WapSiteUrl+'/tmpl/member/login.html';
+               }else{
+                  var quantity = 1; 
+                  var arr=document.getElementsByTagName('button');
+                    //alert(arr.length);                 
+                    for(var i=0;i<arr.length;i++){
+                        arr[i].onclick=function(){
+                            var goods_id=this.id;
+                                                        
+                            $.ajax({
+                                 url:ApiUrl+"/index.php?act=member_cart&op=cart_add",
+                                 data:{key:key,goods_id:goods_id,quantity:quantity},
+                                 type:"post",
+                                
+                                 success:function (result){
+                                    var rData = $.parseJSON(result);
+                                    if(checklogin(rData.login)){
+                                      if(!rData.datas.error){
+                                         $.sDialog({
+                                            skin:"block",
+                                            content:"添加购物车成功！",
+                                            "okBtnText": "再逛逛",
+                                            "cancelBtnText": "去购物车",
+                                            okFn:function (){},
+                                            cancelFn:function (){
+                                              window.location.href = WapSiteUrl+'/tmpl/cart_list.html';
+                                            }
+                                          });
+                                      }else{
+                                        $.sDialog({
+                                          skin:"red",
+                                          content:rData.datas.error,
+                                          okBtn:false,
+                                          cancelBtn:false
+                                        });
+                                      }
+                                    }
+                                 }
+                              })
+                        } 
+                    }
+
+                }
+            }
+</script>
+
+</body>
+</html>

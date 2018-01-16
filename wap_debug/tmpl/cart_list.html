@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/child.css">
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript">
+  function cli(Obj)
+  {
+  var fmId=document.form.id;
+  var collid = document.getElementById("all");
+  var coll = document.getElementsByName(Obj);
+  if (collid.checked){
+     for(var i = 0; i < coll.length; i++)
+       coll[i].checked = true;
+  }else{
+     for(var i = 0; i < coll.length; i++)
+       coll[i].checked = false;
+  }
+  }
+</script>
+</head>
+<body>
+    <header id="header"></header>
+        <div class="cart-list-wp" >
+            <div id="cart-list-wp"></div>
+            <script type="text/html" id="cart-list" >
+            <% if(cart_list.length >0){%>
+                <ul class="cart-list" >
+                        <li class="">
+                        <label>全选<input class="cart-shop-cheb" type="checkbox" name="sales" id="selectAll" ></label>
+                        </li>
+                    <% for (var i = 0;i<cart_list.length;i++){%>
+                        
+                        <li class="cart-list-item">
+							<form name="form" id="form<%=cart_list[i][0].store_id%>">
+                            <div class="cart-shop-name">
+                            <!--<input class="cart-shop-cheb" type="checkbox" name="sales" id="<%=cart_list[i][0].store_id%>"  onclick="cli(this(id));">-->
+                                店铺名称：<%=cart_list[i][0].store_name%>
+                               
+                            </div>
+                            <% for (var j = 0;j<cart_list[i].length;j++){%>
+
+                            <div class="cart-litem-wp clearfix">
+                                <input class="cart-sales-cheb" type="checkbox" name="sales" cart_id="<%=cart_list[i][j].cart_id%>" id="<%=cart_list[i][j].store_id%>" nc_type="eachGoodsCheckBox">
+                                <a class="cart-litemw-imgwp" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i][j].goods_id%>">
+                                    <img src="<%=cart_list[i][j].goods_image_url%>"/>
+                                </a>
+                                <div class="cart-litemw-cnt" cart_id="<%=cart_list[i][j].cart_id%>">
+                                    <a class="cart-litemwc-pdname" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i][j].goods_id%>">
+                                        <%=cart_list[i][j].goods_name%>
+                                    </a>
+                                    <p class="mt5">
+                                        商品单价：￥<%=cart_list[i][j].goods_price%>
+                                    </p>
+                                     <p class="mt5">
+                                        商品总价：￥<span class="goods-total-price" nc_type="eachGoodsTotal"><%=cart_list[i][j].goods_sum%></span>
+                                    </p>
+                                    <p class="cart-litemwc-pdcount clearfix mt5">
+                                        <span class="minus-wp fleft">
+                                            <span class="i-minus"></span>
+                                        </span>
+                                        <input type="text" class="buy-num buynum fleft" value="<%=cart_list[i][j].goods_num%>"/>
+                                        <span class="add-wp fleft">
+                                            <span class="i-add"></span>
+                                        </span>
+                                    </p>
+                                </div>
+								<span class="cart-list-del" cart_id="<%=cart_list[i][j].cart_id%>">
+                                <span class="i-del"></span>
+                            </span>
+                            </div>
+                            
+                            <%}%>
+							</form>
+                        </li>
+                        
+                    <%}%>
+                    <!----><li class="cart-list-oitem mt10">
+                        商品总金额：<span class="clr-d94 total_price" id="cartTotal">0</span>元
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="goto-settlement mt10">去结算</a>
+                    </li>
+                    <li>
+                        <a href="<%=WapSiteUrl%>/tmpl/product_list.html?keyword=" class="goto-shopping mt10">去逛逛</a>
+                    </li>
+                </ul>
+            <%}else{%>
+                <div class="no-record m10">
+                    <img src="../images/cart.png">
+                    <div>购物车里还没有商品</div>
+                    <span><a href="../index.html">马上去购物</a></span>
+                    <span><a href="./member/order_list.html">我的订单</a></span>
+                </div>
+            <%}%>
+            </script>
+        </div>
+    </div>
+    <div id="footer"></div>  
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../js/tmpl/cart-list.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var jq = $.noConflict();
+    </script>
+</body>
+</html>
